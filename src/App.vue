@@ -8,8 +8,6 @@
       <div class="image-section__wrapper">
         <img class="logo" src="/img/logo.png" alt="logo">
       </div>
-
-
       <img class="image-section__login-1" src="/img/login/2.svg" alt="img">
       <img class="image-section__login-2" src="/img/login/13.svg" alt="img">
       <img class="image-section__login-3" src="/img/login/6.png" alt="img">
@@ -23,15 +21,55 @@
       <img class="image-section__login-11" src="/img/login/3.svg" alt="img">
       <img class="image-section__login-12" src="/img/login/5.svg" alt="img">
       <img class="image-section__login-13" src="/img/login/12.svg" alt="img">
-
     </div>
-    <div class="page-login__column login-section"></div>
+    <div class="page-login__column login-section">
+      <div class="login">
+        <div class="login__title">Добро пожаловать</div>
+        <div class="login__text">Авторизуйтесь для продолжения работы</div>
+        <form action="#" @submit.prevent="submitHandler">
+          <div class="login__description">Введите e-mail</div>
+          <input type="text" class="login__input input-main">
+          <div class="login__description">Введите пароль</div>
+          <div class="login__section-input">
+            <input :type="passwordFieldType" v-model="password" type="text" class="login__input input-main">
+            <button class="login__button-password button-password" type="password" @click="switchVisibility">
+              <img v-show="showPassword" src="/img/eye.svg" alt="show">
+              <img v-show="!showPassword" src="/img/eye-close.svg" alt="show">
+            </button>
+          </div>
+
+          <button type="submit" class="login__button button-main">Войти</button>
+        </form>
+
+
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      password: "",
+      passwordFieldType: "password",
+      showPassword: true
+    };
+  },
+  methods: {
+    switchVisibility() {
+      this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+      this.showPassword = !this.showPassword
+      console.log(this.showPassword)
+    }
+  }
 
+  // name: 'login',
+  // methods: {
+  //   submitHandler() {
+  //     console.log(123)
+  //   }
+  // }
 
 }
 </script>
@@ -44,17 +82,108 @@ export default {
   }
 
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: none;
+  }
+
+  button {
+    border: none;
+  }
+
+  .button-main {
+    background: linear-gradient(89.85deg, #0078FF 0.11%, #02AAF6 99.87%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    color: #FFFFFF;
+    padding: 10px 0;
+    cursor: pointer;
+
+    &:hover {
+      //background: #0179FF;
+      background: linear-gradient(89.85deg, #0179FF 0.11%, #0179FF 99.87%);
+    }
+  }
+
+  .button-password {
+    background: none;
+    cursor: pointer;
+  }
+
+  .login {
+    max-width: 365px;
+    width: 100%;
+    padding: 0 15px;
+
+    &__button-password {
+      position: absolute;
+      top: 8px;
+      right: 15px;
+    }
+
+    &__section-input {
+      position: relative;
+    }
+
+    &__title {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 50px;
+      color: #11203E;
+      margin-bottom: 10px;
+    }
+
+    &__text {
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 23px;
+      color: #11203E;
+      margin-bottom: 40px;
+    }
+
+    &__description {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 120%;
+      color: #A9A9A9;
+      margin-bottom: 10px;
+    }
+
+    &__input {
+      width: 100%;
+      height: 36px;
+      margin-bottom: 30px;
+      padding: 0px 15px;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+
+  .input-main {
+    border: 1px solid #DFDFDF;
+    border-radius: 43px;
+
+    &:hover {
+      border: 1px solid rgba(1, 121, 255, 0.1);
+    }
   }
 
   .page-login {
     display: flex;
   }
 
-  //.logo {
-  //  width: calc(205px + (369 - 205) * ( (100vw - 1024px) / ( 1980 - 1024) ));
-  //}
+  .login-section {
+    width: 50%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
   .image-section {
     width: 50%;
@@ -157,8 +286,32 @@ export default {
     }
   }
 
+  @media (max-width: 1024px) {
+    .logo {
+      width: 205px;
+    }
+  }
 
+  @media (max-width: 1023px) {
+    .image-section {
+      display: none;
+    }
 
+    .login-section {
+      width: 100%;
+    }
+  }
+  @media (max-width: 450px) {
+    .login {
+      &__title {
+        font-size: 30px;
+      }
+
+      &__text {
+        font-size: 18px
+      }
+    }
+  }
 
 
 </style>
