@@ -1,8 +1,4 @@
 <template>
-
-
-
-
   <div class="page-login">
     <div class="page-login__column image-section">
       <div class="image-section__wrapper">
@@ -28,14 +24,19 @@
         <div class="login__text">Авторизуйтесь для продолжения работы</div>
         <form action="#" @submit.prevent="submitHandler">
           <div class="login__description">Введите e-mail</div>
-          <input type="text" class="login__input input-main">
+          <div class="login__section-input section-login">
+            <input type="text" class="section-login__input login__input input-main">
+            <span class="section-login__error error-validation">Введите e-mail</span>
+          </div>
+
           <div class="login__description">Введите пароль</div>
-          <div class="login__section-input">
-            <input :type="passwordFieldType" v-model="password" type="text" class="login__input input-main">
-            <button class="login__button-password button-password" type="password" @click="switchVisibility">
+          <div class="login__section-input section-login">
+            <input :type="passwordFieldType" v-model="password" type="text" class="section-login__input input-main input-main--icon">
+            <button class="login__button-password button-password" type="button" @click="switchVisibility">
               <img v-show="showPassword" src="/img/eye.svg" alt="show">
               <img v-show="!showPassword" src="/img/eye-close.svg" alt="show">
             </button>
+            <span class="section-login__error error-validation">Введите пароль</span>
           </div>
 
           <button type="submit" class="login__button button-main">Войти</button>
@@ -48,6 +49,9 @@
 </template>
 
 <script>
+import useValidate from '@vuelidate/core';
+import { required, email, minLength } from '@vuelidate/validators';
+
 export default {
   data() {
     return {
@@ -56,20 +60,18 @@ export default {
       showPassword: true
     };
   },
+
+  name: 'login',
   methods: {
     switchVisibility() {
       this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
       this.showPassword = !this.showPassword
-      console.log(this.showPassword)
+    },
+
+    submitHandler() {
+      console.log(123)
     }
   }
-
-  // name: 'login',
-  // methods: {
-  //   submitHandler() {
-  //     console.log(123)
-  //   }
-  // }
 
 }
 </script>
@@ -92,6 +94,13 @@ export default {
     border: none;
   }
 
+  .error-validation {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #DE0000;
+  }
+
   .button-main {
     background: linear-gradient(89.85deg, #0078FF 0.11%, #02AAF6 99.87%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -101,7 +110,6 @@ export default {
     cursor: pointer;
 
     &:hover {
-      //background: #0179FF;
       background: linear-gradient(89.85deg, #0179FF 0.11%, #0179FF 99.87%);
     }
   }
@@ -124,6 +132,7 @@ export default {
 
     &__section-input {
       position: relative;
+      margin-bottom: 30px;
     }
 
     &__title {
@@ -150,15 +159,21 @@ export default {
       margin-bottom: 10px;
     }
 
+    &__button {
+      width: 100%;
+    }
+  }
+
+  .section-login {
     &__input {
       width: 100%;
       height: 36px;
-      margin-bottom: 30px;
       padding: 0px 15px;
     }
 
-    &__button {
-      width: 100%;
+    &__error {
+      margin-left: 15px;
+      margin-top: 5px;
     }
   }
 
@@ -166,7 +181,15 @@ export default {
     border: 1px solid #DFDFDF;
     border-radius: 43px;
 
+    &--icon {
+      padding: 0 45px 0 15px;
+    }
+
     &:hover {
+      border: 1px solid rgba(1, 121, 255, 0.1);
+    }
+
+    &:focus {
       border: 1px solid rgba(1, 121, 255, 0.1);
     }
   }
@@ -286,7 +309,7 @@ export default {
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1279px) {
     .logo {
       width: 205px;
     }
