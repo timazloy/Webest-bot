@@ -25,8 +25,8 @@
         <form action="#" @submit.prevent="submitHandler">
           <div class="login__description">Введите e-mail</div>
           <div class="login__section-input section-login">
-            <input type="text" class="section-login__input login__input input-main">
-            <span class="section-login__error error-validation">Введите e-mail</span>
+            <input  id="email" type="text" v-model.trim="email" class="section-login__input login__input input-main validate">
+            <span v-if="v$.email.$error" class="section-login__error error-validation">Введите корректный e-mail</span>
           </div>
 
           <div class="login__description">Введите пароль</div>
@@ -36,7 +36,7 @@
               <img v-show="showPassword" src="/img/eye.svg" alt="show">
               <img v-show="!showPassword" src="/img/eye-close.svg" alt="show">
             </button>
-            <span class="section-login__error error-validation">Введите пароль</span>
+            <span class="section-login__error error-validation" v-if="v$.password.$error">Введите пароль</span>
           </div>
 
           <button type="submit" class="login__button button-main">Войти</button>
@@ -50,18 +50,23 @@
 
 <script>
 import useValidate from '@vuelidate/core';
-import { required, email, minLength } from '@vuelidate/validators';
+import { required, email } from '@vuelidate/validators';
 
 export default {
+  name: 'login',
   data() {
     return {
       password: "",
       passwordFieldType: "password",
-      showPassword: true
+      showPassword: true,
+      v$: useValidate(),
+      email: '',
     };
   },
-
-  name: 'login',
+  validations: () => ({
+    email: { required, email },
+    password: { required }
+  }),
   methods: {
     switchVisibility() {
       this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
@@ -69,9 +74,13 @@ export default {
     },
 
     submitHandler() {
-      console.log(123)
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        console.log(123)
+      }
     }
   }
+
 
 }
 </script>
