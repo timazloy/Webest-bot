@@ -25,13 +25,13 @@
         <form action="#" @submit.prevent="submitHandler">
           <div class="login__description">Введите e-mail</div>
           <div class="login__section-input section-login">
-            <input  id="email" type="text" v-model.trim="email" class="section-login__input login__input input-main validate">
+            <input :class="{inputError: v$.email.$error}" id="email" type="text" v-model.trim="email" class="section-login__input login__input input-main validate">
             <span v-if="v$.email.$error" class="section-login__error error-validation">Введите корректный e-mail</span>
           </div>
 
           <div class="login__description">Введите пароль</div>
           <div class="login__section-input section-login">
-            <input :type="passwordFieldType" v-model="password" type="text" class="section-login__input input-main input-main--icon">
+            <input :class="{inputError: v$.password.$error}" :type="passwordFieldType" v-model="password" type="text" class="section-login__input input-main input-main--icon">
             <button class="login__button-password button-password" type="button" @click="switchVisibility">
               <img v-show="showPassword" src="/img/eye.svg" alt="show">
               <img v-show="!showPassword" src="/img/eye-close.svg" alt="show">
@@ -142,6 +142,7 @@ export default {
     &__section-input {
       position: relative;
       margin-bottom: 30px;
+      height: 50px;
     }
 
     &__title {
@@ -185,6 +186,8 @@ export default {
       margin-top: 5px;
     }
   }
+
+
 
   .input-main {
     border: 1px solid #DFDFDF;
@@ -344,6 +347,17 @@ export default {
       }
     }
   }
+  .inputError {
+    border: 1px solid #DE0000;
+    background: rgba(222, 0, 0, 0.1);
 
+    &:focus {
+      border: 1px solid #DE0000;
+    }
+
+    &:hover {
+      border: 1px solid #DE0000;
+    }
+  }
 
 </style>
