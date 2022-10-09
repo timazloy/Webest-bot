@@ -26,7 +26,7 @@
           <div class="login__description">Введите e-mail</div>
           <div class="login__section-input section-login">
             <input :class="{inputError: v$.email.$error}" id="email" type="text" v-model.trim="email" class="section-login__input login__input input-main validate">
-            <span v-if="v$.email.$error" class="section-login__error error-validation">Введите корректный e-mail</span>
+            <span v-if="v$.email.$error"  class="section-login__error error-validation">{{printError(v$.email.$errors[0].$message)}}</span>
           </div>
 
           <div class="login__description">Введите пароль</div>
@@ -77,6 +77,14 @@ export default {
       this.v$.$validate();
       if (!this.v$.$error) {
         console.log(123)
+      }
+    },
+
+    printError(name) {
+      if (name === 'Value is required') {
+        return 'Введите e-mail'
+      } else if (name === 'Value is not a valid email address') {
+        return 'Введите корректный e-mail'
       }
     }
   }
