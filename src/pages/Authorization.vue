@@ -33,8 +33,8 @@
           <div class="login__section-input section-login">
             <input :class="{inputError: v$.password.$error}" :type="passwordFieldType" v-model="password" type="text" class="section-login__input input-main input-main--icon">
             <button class="login__button-password button-password" type="button" @click="switchVisibility">
-              <img v-show="showPassword" src="/img/eye.svg" alt="show">
-              <img v-show="!showPassword" src="/img/eye-close.svg" alt="show">
+              <img v-show="showPassword" src="/img/eye-close.svg" alt="show">
+              <img v-show="!showPassword" src="/img/eye.svg" alt="show">
             </button>
             <span class="section-login__error error-validation" v-if="v$.password.$error">Введите пароль</span>
           </div>
@@ -100,7 +100,12 @@ export default {
   height: calc(#{$minPx}px + (#{$maxPx} - #{$minPx}) * ( (100vw - #{$minWindowSize}px) / (#{$maxWindowSize} - #{$minWindowSize}) ));
 }
 
+$ff-r: 'GloryRegular';
+$ff-t: 'GloryThin';
+$ff-b: 'GloryBold';
+
 * {
+  font-family: $ff-r;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -148,13 +153,13 @@ button {
 }
 
 .login {
-  max-width: 365px;
+  max-width: 393px;
   width: 100%;
   padding: 0 15px;
 
   &__button-password {
     position: absolute;
-    top: 8px;
+    top: 10px;
     right: 15px;
   }
 
@@ -165,7 +170,7 @@ button {
   }
 
   &__title {
-    font-weight: 700;
+    font-family: $ff-b;
     font-size: 40px;
     line-height: 50px;
     color: #11203E;

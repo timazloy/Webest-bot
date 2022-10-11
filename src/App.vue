@@ -46,8 +46,15 @@
 
 
 <style lang="scss">
+$ff-r: 'GloryRegular';
+$ff-m: 'GloryMedium';
+$ff-b: 'GloryBold';
+$ff-t: 'GloryThin';
+
+
 * {
-  font-family: 'GloryRegular';
+  font-family: $ff-r;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -180,7 +187,7 @@ button {
   &__item {
     display: flex;
     padding: 20px 10px;
-    font-weight: 500;
+    font-family: $ff-m;
     font-size: 16px;
     line-height: 120%;
     color: #11203E;
