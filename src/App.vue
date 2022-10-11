@@ -150,7 +150,7 @@ button {
   }
 
   &__count {
-    font-weight: 500;
+    font-family: $ff-m;
     font-size: 14px;
     line-height: 120%;
     color: #11203E;
@@ -158,9 +158,10 @@ button {
 }
 
 .header-info {
-  max-width: 840px;
-  width: 100%;
   display: flex;
+  justify-content: flex-end;
+  //max-width: 850px;
+  width: 100%;
   gap: 20px;
 }
 
@@ -186,6 +187,7 @@ button {
   display: flex;
   &__item {
     display: flex;
+    width: max-content;
     padding: 20px 10px;
     font-family: $ff-m;
     font-size: 16px;
