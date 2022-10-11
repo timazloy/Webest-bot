@@ -36,6 +36,13 @@
       </div>
 
     </div>
+    <div class="container">
+      <div class="page__main main-page">
+        <div class="main-page__column"></div>
+        <div class="main-page__column"></div>
+      </div>
+    </div>
+
   </div>
 
 </template>
@@ -68,9 +75,24 @@ button {
   background: none;
 }
 
+.container {
+  max-width: 1880px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .page {
   &__header {
     margin-bottom: 63px;
+  }
+}
+
+.main-page {
+
+  &__column {
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
   }
 }
 
@@ -100,6 +122,7 @@ button {
 }
 
 .button-black {
+  font-family: $ff-m;
   cursor: pointer;
   padding: 10px 18px;
   border: 1px solid #11203E;
@@ -109,12 +132,13 @@ button {
 .full-name {
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-family: $ff-m;
   font-size: 14px;
   color: #11203E;
 }
 
 .initials {
+  font-family: $ff-m;
   display: flex;
   align-items: center;
   padding: 10px;
