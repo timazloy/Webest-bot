@@ -6,9 +6,9 @@
       </a>
       <div class="header__section">
         <div class="header-links">
-          <a href="#" class="header-links__item">Учет времени</a>
-          <a href="#" class="header-links__item">Отпуск</a>
-          <a href="#" class="header-links__item">Бот</a>
+          <a href="/timetracking" class="header-links__item">Учет времени</a>
+          <a href="/vacation" class="header-links__item">Отпуск</a>
+          <a href="/" class="header-links__item">Бот</a>
         </div>
         <div class="header-info">
           <div class="counter-time">
@@ -36,13 +36,8 @@
       </div>
 
     </div>
-    <div class="container">
-      <div class="page__main main-page">
-        <div class="main-page__column"></div>
-        <div class="main-page__column"></div>
-      </div>
-    </div>
 
+    <router-view></router-view>
   </div>
 
 </template>
