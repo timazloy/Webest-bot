@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import TimeTracking from './pages/TimeTracking.vue'
 import Vacation from './pages/Vacation.vue'
 import Bot from './pages/Bot.vue'
+import Authorization from "@/pages/Authorization";
 import App from './App.vue'
 
 export default  createRouter({
@@ -9,6 +10,7 @@ export default  createRouter({
     routes: [
         { path: '/bot', component: Bot, alias: '/' },
         { path: '/timetracking', component: TimeTracking },
-        { path: '/vacation', component: Vacation }
+        { path: '/vacation', component: Vacation },
+        { path: '/authorization', component: Authorization }
     ]
 })

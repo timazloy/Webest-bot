@@ -4,19 +4,7 @@
       <div class="image-section__wrapper">
         <img class="logo" src="/img/logo.png" alt="logo">
       </div>
-      <img class="login-image image-section__login-1" src="/img/login/2.svg" alt="img">
-      <img class="login-image image-section__login-2" src="/img/login/13.svg" alt="img">
-      <img class="login-image image-section__login-3" src="/img/login/6.png" alt="img">
-      <img class="login-image image-section__login-4" src="/img/login/1.svg" alt="img">
-      <img class="login-image image-section__login-5" src="/img/login/9.svg" alt="img">
-      <img class="login-image image-section__login-6" src="/img/login/7.svg" alt="img">
-      <img class="login-image image-section__login-7" src="/img/login/11.svg" alt="img">
-      <img class="login-image image-section__login-8" src="/img/login/4.svg" alt="img">
-      <img class="login-image image-section__login-9" src="/img/login/10.svg" alt="img">
-      <img class="login-image image-section__login-10" src="/img/login/8.svg" alt="img">
-      <img class="login-image image-section__login-11" src="/img/login/3.svg" alt="img">
-      <img class="login-image image-section__login-12" src="/img/login/5.svg" alt="img">
-      <img class="login-image image-section__login-13" src="/img/login/12.svg" alt="img">
+      <img v-for="n in 13"  :class="`login-image image-section__login-${n}`" :src="require(`/public/img/login/${n}.svg`)" alt="img">
     </div>
     <div class="page-login__column login-section">
       <div class="login">

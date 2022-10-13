@@ -83,13 +83,7 @@ button {
   }
 }
 
-.main-page {
 
-  &__column {
-    border: 1px solid #DFDFDF;
-    border-radius: 10px;
-  }
-}
 
 .button-main {
   background: linear-gradient(89.85deg, #0078FF 0.11%, #02AAF6 99.87%);
