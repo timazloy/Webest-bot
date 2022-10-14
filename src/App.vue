@@ -48,6 +48,7 @@
 
 
 <style lang="scss">
+
 $ff-r: 'GloryRegular';
 $ff-m: 'GloryMedium';
 $ff-b: 'GloryBold';
