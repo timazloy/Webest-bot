@@ -48,7 +48,7 @@
 
 
 <style lang="scss">
-@import "src/scss/app.scss";
+@import "src/scss/variables.scss";
 
 
 .container {
