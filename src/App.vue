@@ -48,28 +48,8 @@
 
 
 <style lang="scss">
+@import "src/scss/app.scss";
 
-$ff-r: 'GloryRegular';
-$ff-m: 'GloryMedium';
-$ff-b: 'GloryBold';
-$ff-t: 'GloryThin';
-
-
-* {
-  font-family: $ff-r;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  border: none;
-  background: none;
-}
 
 .container {
   max-width: 1880px;
@@ -82,41 +62,6 @@ button {
   &__header {
     margin-bottom: 63px;
   }
-}
-
-
-
-.button-main {
-  background: linear-gradient(89.85deg, #0078FF 0.11%, #02AAF6 99.87%);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  color: #FFFFFF;
-  padding: 10px;
-  cursor: pointer;
-
-  &__text {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    color: #FFFFFF;
-
-  }
-
-  &:hover {
-    background: linear-gradient(89.85deg, #0179FF 0.11%, #0179FF 99.87%);
-  }
-}
-
-.button-black {
-  font-family: $ff-m;
-  cursor: pointer;
-  padding: 10px 18px;
-  border: 1px solid #11203E;
-  border-radius: 24px;
 }
 
 .full-name {
@@ -174,7 +119,6 @@ button {
 .header-info {
   display: flex;
   justify-content: flex-end;
-  //max-width: 850px;
   width: 100%;
   gap: 20px;
 }

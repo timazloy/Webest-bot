@@ -1,8 +1,20 @@
 <template>
   <div class="accordion">
-    <div class="accordion__title">{{accordion.industry}}</div>
-    <div class="accordion__item">{{accordion.employee}}</div>
-    <div class="accordion__item">{{accordion.employee2}}</div>
+    <label class="accordion__title accordion-item custom-checkbox">
+      <input class="accordion-item__checkbox" type="checkbox">
+      <span class="accordion-item__text">{{accordion.industry}}</span>
+    </label>
+
+    <label class="accordion__title accordion-item custom-checkbox">
+      <input class="accordion-item__checkbox" type="checkbox">
+      <span class="accordion-item__text">{{accordion.employee}}</span>
+    </label>
+
+    <label class="accordion__title accordion-item custom-checkbox">
+      <input class="accordion-item__checkbox" type="checkbox">
+      <span class="accordion-item__text">{{accordion.employee2}}</span>
+    </label>
+
   </div>
 </template>
 
@@ -13,3 +25,19 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+@import "src/scss/app.scss";
+
+.accordion-item {
+  display: flex;
+
+  &__text {
+    font-family: $ff-m;
+    font-size: 20px;
+    line-height: 100%;
+    color: $primaryBlack;
+  }
+}
+
+</style>

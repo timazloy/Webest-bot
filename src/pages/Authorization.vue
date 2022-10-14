@@ -92,17 +92,7 @@ $ff-r: 'GloryRegular';
 $ff-t: 'GloryThin';
 $ff-b: 'GloryBold';
 
-* {
-  font-family: $ff-r;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: none;
-}
 
-button {
-  border: none;
-}
 
 .error-validation {
   font-weight: 400;
@@ -111,34 +101,6 @@ button {
   color: #DE0000;
 }
 
-.button-main {
-  background: linear-gradient(89.85deg, #0078FF 0.11%, #02AAF6 99.87%);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  color: #FFFFFF;
-  padding: 10px;
-  cursor: pointer;
-
-  &__text {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    color: #FFFFFF;
-
-  }
-
-  &:hover {
-    background: linear-gradient(89.85deg, #0179FF 0.11%, #0179FF 99.87%);
-  }
-}
-.button-password {
-  background: none;
-  cursor: pointer;
-}
 
 .login {
   max-width: 393px;
