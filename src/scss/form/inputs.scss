@@ -14,15 +14,11 @@
 /* создание в label псевдоэлемента before со следующими стилями */
 .custom-checkbox>span::before {
   content: '';
-  display: inline-block;
-  flex-shrink: 0;
-  flex-grow: 0;
   border: 2px solid #DFDFDF;
-  border-radius: 0.25em;
-  margin-right: 0.5em;
+  border-radius: 2px;
+  margin-right: 17px;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 50% 50%;
   width: 22px;
   height: 22px;
 }

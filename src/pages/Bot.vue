@@ -86,7 +86,7 @@ export default {
 
 
 .section-list {
-  padding: 40px;
+  padding: 40px 0;
 
   &__check {
     margin: 0 0 30px 7px;
