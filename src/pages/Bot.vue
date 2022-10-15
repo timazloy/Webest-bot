@@ -72,6 +72,7 @@ export default {
   display: flex;
   gap: 17px;
   cursor: pointer;
+  padding: 37px 30px 14px 30px;
 
   &__checkbox {
     width: 22px;
@@ -81,15 +82,15 @@ export default {
     font-family: $ff-m;
     font-size: 26px;
     color: #11203E;
+    margin-left: 7px;
   }
 }
 
 
 .section-list {
-  padding: 40px 0;
-
-  &__check {
-    margin: 0 0 30px 7px;
+  &__item {
+    margin-bottom: 10px;
   }
+
 }
 </style>

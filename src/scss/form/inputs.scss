@@ -38,3 +38,7 @@
   background-position-x: 3px;
   background-position-y: 5px;
 }
+
+.custom-checkbox>input:not(:disabled):not(:checked)+span:hover::before {
+  border-color: #b3d7ff;
+}

@@ -1,11 +1,14 @@
 <template>
-  <div class="accordion">
+  <div class="section-list__item accordion">
     <div class="accordion__item-wrapper">
-      <label class="accordion__title accordion-item custom-checkbox">
+      <label class="accordion__title accordion-item accordion-item--title custom-checkbox">
         <input class="accordion-item__checkbox" type="checkbox">
-        <span class="accordion-item__text">{{accordion.industry}}</span>
-        <img class="accordion-item__img" src="/img/arrow-top.svg" alt="img">
+        <span class="accordion-item__text accordion-item__text--title">{{accordion.industry}}</span>
       </label>
+      <button class="accordion-button">
+        <img class="accordion-item__img" src="/img/arrow-top.svg" alt="img">
+      </button>
+
     </div>
 
     <div class="accordion__item-wrapper">
@@ -37,8 +40,16 @@ export default {
 <style lang="scss">
 @import "src/scss/variables.scss";
 
-.accordion {
+.accordion:last-child .accordion__item-wrapper:last-child .accordion__title:last-child {
+  border-bottom: none;
+}
 
+.accordion-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  padding: 38px 0;
 }
 
 .accordion-item {
@@ -47,9 +58,16 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: 17px;
-  border-bottom: 1px solid #DFDFDF;
-  padding: 30px 0;
-  margin: 0 30px;
+  width: 100%;
+  //border-bottom: 1px solid #DFDFDF;
+  //margin: 0 30px;
+
+
+
+  &--title {
+    width: fit-content;
+    margin: unset;
+  }
 
   &__text {
     font-family: $ff-m;
@@ -57,6 +75,12 @@ export default {
     line-height: 100%;
     color: $primaryBlack;
     margin-left: 7px;
+    width: 100%;
+    padding: 30px 0;
+
+    &--title {
+      width: auto;
+    }
 
     &--min {
       font-size: 16px;
@@ -66,6 +90,16 @@ export default {
   &__img {
     width: 16px;
     height: 8px;
+  }
+}
+
+.accordion {
+  &__item-wrapper {
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DFDFDF;
   }
 }
 
