@@ -40,7 +40,7 @@ export default {
 <style lang="scss">
 @import "src/scss/variables.scss";
 
-.accordion:last-child .accordion__item-wrapper:last-child .accordion__title:last-child {
+.accordion:last-child .accordion__item-wrapper:last-child {
   border-bottom: none;
 }
 
@@ -59,10 +59,6 @@ export default {
   justify-content: space-between;
   gap: 17px;
   width: 100%;
-  //border-bottom: 1px solid #DFDFDF;
-  //margin: 0 30px;
-
-
 
   &--title {
     width: fit-content;
