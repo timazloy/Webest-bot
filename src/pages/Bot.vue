@@ -15,7 +15,16 @@
             @toggleOpen="toggleOpen"
         />
       </div>
-      <div class="bot-page__column">2222222222</div>
+      <div class="bot-page__column message-section">
+        <div class="message-section__title">Сообщение</div>
+        <div class="message-section__text-section text-section">
+          <textarea placeholder="Введите текст" class="text-section__textarea custom-textarea"></textarea>
+          <label>
+            <input type="file">
+          </label>
+        </div>
+        <button class="message-section__button-send"></button>
+      </div>
     </div>
   </div>
 
@@ -50,7 +59,7 @@ export default {
     }
   },
   methods: {
-    toggleOpen: function (index) {
+    toggleOpen(index) {
       this.employees = this.employees.map((item, i) => {
         if (index === i) {
           item.open = !item.open;
@@ -97,8 +106,16 @@ export default {
   }
 }
 
-.open {
+.message-section {
+  padding: 30px;
+  height: max-content;
 
+  &__title {
+    font-family: $ff-m;
+    font-size: 26px;
+    color: $primaryBlack;
+    margin-bottom: 30px;
+  }
 }
 
 .section-list {
@@ -106,5 +123,16 @@ export default {
     margin-bottom: 10px;
   }
 
+}
+
+.text-section {
+  display: flex;
+  flex-direction: column;
+
+  &__textarea {
+    margin-bottom: 20px;
+    resize: none;
+    height: 140px;
+  }
 }
 </style>
