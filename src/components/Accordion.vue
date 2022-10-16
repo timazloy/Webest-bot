@@ -13,17 +13,10 @@
     </div>
 
     <div class="accordion__items">
-      <div class="accordion__item-wrapper">
+      <div v-for="item in accordion.employee" class="accordion__item-wrapper">
         <label class="accordion__title accordion-item custom-checkbox">
           <input class="accordion-item__checkbox" type="checkbox">
-          <span class="accordion-item__text accordion-item__text--min">{{accordion.employee}}</span>
-        </label>
-      </div>
-
-      <div class="accordion__item-wrapper">
-        <label class="accordion__title accordion-item custom-checkbox">
-          <input class="accordion-item__checkbox" type="checkbox">
-          <span class="accordion-item__text accordion-item__text--min">{{accordion.employee2}}</span>
+          <span class="accordion-item__text accordion-item__text--min">{{item}}</span>
         </label>
       </div>
     </div>

@@ -33,20 +33,17 @@ export default {
       employees: [
         {
           industry: 'Дизайн',
-          employee: 'Алина Деньщикова',
-          employee2: 'Алина Иванова',
+          employee: ['Алина Деньщикова', 'Алина Иванова'],
           open: false
         },
         {
           industry: 'Менеджмент',
-          employee: 'Дмитрий Петров',
-          employee2: 'Алексей Иванов',
+          employee: ['Дмитрий Петров', 'Алексей Иванов'],
           open: false
         },
         {
           industry: 'Разработка',
-          employee: 'Дмитрий Королев',
-          employee2: 'Алексей Царев',
+          employee: ['Дмитрий Королев', 'Алексей Царев'],
           open: false
         }
       ]

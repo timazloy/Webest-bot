@@ -4,7 +4,7 @@
       <div class="image-section__wrapper">
         <img class="logo" src="/img/logo.png" alt="logo">
       </div>
-      <img v-for="n in 13"  :class="`login-image image-section__login-${n}`" :src="require(`/public/img/login/${n}.svg`)" alt="img">
+      <img v-for="n in 13" :class="`login-image image-section__login-${n}`" :src="require(`/public/img/login/${n}.svg`)" alt="img">
     </div>
     <div class="page-login__column login-section">
       <div class="login">
