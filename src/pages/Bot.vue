@@ -11,6 +11,8 @@
             :accordion="item"
             :index="i"
             :key="i"
+            :open="item.open"
+            @toggleOpen="toggleOpen"
         />
       </div>
       <div class="bot-page__column">2222222222</div>
@@ -49,6 +51,17 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    toggleOpen: function (index) {
+      this.employees = this.employees.map((item, i) => {
+        if (index === i) {
+          item.open = !item.open;
+         }
+
+        return item;
+      });
+    }
   }
 }
 </script>
@@ -72,7 +85,6 @@ export default {
   display: flex;
   gap: 17px;
   cursor: pointer;
-  padding: 37px 30px 14px 30px;
 
   &__checkbox {
     width: 22px;
@@ -83,9 +95,14 @@ export default {
     font-size: 26px;
     color: #11203E;
     margin-left: 7px;
+    width: 100%;
+    padding: 37px 30px 14px 30px;
   }
 }
 
+.open {
+
+}
 
 .section-list {
   &__item {
