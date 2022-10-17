@@ -13,7 +13,7 @@
     </div>
 
     <div class="accordion__items">
-      <div v-for="item in accordion.employee" class="accordion__item-wrapper" :key="item.id">
+      <div v-for="item in accordion.employee" :class="selectedEmployees.includes(item) ? 'accordion__item-wrapper accordion__item-wrapper--background' : 'accordion__item-wrapper'" :key="item.id">
         <label class="accordion__title accordion-item custom-checkbox">
           <input class="accordion-item__checkbox" type="checkbox" :value="item" v-model="selectedEmployees">
           <span class="accordion-item__text accordion-item__text--min">{{item.name}}</span>
@@ -159,13 +159,23 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.4s linear;
+    //transition: all 0.4s linear;
+
+    &--background {
+      background: rgba(0, 154, 241, 0.1);
+      
+    }
   }
+
 }
 
-.accordion__item-wrapper {
-  transition: all 0.4s linear;
+.accordion:last-child .accordion__item-wrapper:last-child {
+  border-radius: 0 0 10px 10px;
 }
+
+//.accordion__item-wrapper {
+//  transition: all 0.4s linear;
+//}
 
 //.accordion__item-wrapper--active {
   //margin-bottom: 55px;
