@@ -47,12 +47,12 @@ export default {
         },
         {
           industry: 'Менеджмент',
-          employee: ['Дмитрий Петров', 'Алексей Иванов'],
+          employee: [{id: 3, name: 'Дмитрий Петров'}, {id: 4, name: 'Алексей Иванов'}],
           open: false
         },
         {
           industry: 'Разработка',
-          employee: ['Дмитрий Королев', 'Алексей Царев'],
+          employee: [{id: 5, name: 'Дмитрий Королев'}, {id: 6, name: 'Алексей Царев'}],
           open: false
         }
       ]
