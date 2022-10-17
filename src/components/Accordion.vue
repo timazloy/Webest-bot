@@ -3,7 +3,7 @@
     <div :class="open ? 'accordion__item-wrapper accordion__item-wrapper--active' : 'accordion__item-wrapper'">
       <div :class="open ? 'accordion__category accordion__category--active' : 'accordion__category'">
         <label class="accordion-item accordion-item--title custom-checkbox">
-          <input class="accordion-item__checkbox" type="checkbox">
+          <input class="accordion-item__checkbox" type="checkbox" :checked="isAllSelected"  @click="toggleCheckAll">
           <span class="accordion-item__text accordion-item__text--title">{{accordion.industry}}</span>
         </label>
         <button  @click="$emit('toggleOpen', index)" type="button" class="accordion-button">
@@ -13,23 +13,37 @@
     </div>
 
     <div class="accordion__items">
-      <div v-for="item in accordion.employee" class="accordion__item-wrapper">
+      <div v-for="item in accordion.employee" class="accordion__item-wrapper" :key="item.id">
         <label class="accordion__title accordion-item custom-checkbox">
-          <input class="accordion-item__checkbox" type="checkbox">
-          <span class="accordion-item__text accordion-item__text--min">{{item}}</span>
+          <input class="accordion-item__checkbox" type="checkbox" :value="item" v-model="selectedEmployees">
+          <span class="accordion-item__text accordion-item__text--min">{{item.name}}</span>
         </label>
       </div>
     </div>
-
-
-
   </div>
 </template>
 
 <script>
 export default {
   name: 'accordion',
-  props: ['accordion', 'index', 'open']
+  props: ['accordion', 'index', 'open'],
+  data() {
+    return {
+      selectedEmployees: []
+    }
+  },
+  computed: {
+    isAllSelected() {
+      return this.accordion.employee.length === this.selectedEmployees.length
+    }
+  },
+
+  methods: {
+    toggleCheckAll() {
+      if (this.isAllSelected) this.selectedEmployees = []
+      else this.selectedEmployees = this.accordion.employee
+    }
+  }
 }
 
 </script>

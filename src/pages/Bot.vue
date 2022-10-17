@@ -42,7 +42,7 @@ export default {
       employees: [
         {
           industry: 'Дизайн',
-          employee: ['Алина Деньщикова', 'Алина Иванова'],
+          employee: [{id: 1, name: 'Алина Деньщикова'}, {id: 2, name: 'Алина Иванова'}],
           open: false
         },
         {
