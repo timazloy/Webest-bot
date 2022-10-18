@@ -60,6 +60,12 @@ export default {
           employee: [{id: 5, name: 'Дмитрий Королев'}, {id: 6, name: 'Алексей Царев'}],
           open: false,
           checked: false
+        },
+        {
+          industry: 'SMM',
+          employee: [{id: 7, name: 'Ольга Кузнецова'}, {id: 7, name: 'Алексей Щербаков'}],
+          open: false,
+          checked: false
         }
       ]
     }
