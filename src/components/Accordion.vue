@@ -34,8 +34,13 @@ export default {
   },
   computed: {
     isAllSelected() {
-
-      return this.accordion.employee.length === this.selectedEmployees.length
+      if (this.accordion.employee.length === this.selectedEmployees.length)  {
+        this.accordion.checked = true
+        return true
+      } else {
+        this.accordion.checked = false
+        return false
+      }
 
     }
   },
