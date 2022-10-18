@@ -3,7 +3,7 @@
     <div :class="open ? 'accordion__item-wrapper accordion__item-wrapper--active' : 'accordion__item-wrapper'">
       <div :class="open ? 'accordion__category accordion__category--active' : 'accordion__category'">
         <label class="accordion-item accordion-item--title custom-checkbox">
-          <input class="accordion-item__checkbox" type="checkbox" :checked="isAllSelected"  @click="toggleCheckAll">
+          <input class="accordion-item__checkbox" type="checkbox" :checked="isAllSelected"  @click="toggleCheckEmployees">
           <span class="accordion-item__text accordion-item__text--title">{{accordion.industry}}</span>
         </label>
         <button  @click="$emit('toggleOpen', index)" type="button" class="accordion-button">
@@ -26,7 +26,7 @@
 <script>
 export default {
   name: 'accordion',
-  props: ['accordion', 'index', 'open'],
+  props: ['accordion', 'index', 'open', 'checkAll', 'employees'],
   data() {
     return {
       selectedEmployees: []
@@ -34,14 +34,21 @@ export default {
   },
   computed: {
     isAllSelected() {
+
       return this.accordion.employee.length === this.selectedEmployees.length
+
     }
   },
 
   methods: {
-    toggleCheckAll() {
-      if (this.isAllSelected) this.selectedEmployees = []
-      else this.selectedEmployees = this.accordion.employee
+    toggleCheckEmployees() {
+      if (this.isAllSelected) {
+        this.selectedEmployees = []
+        this.accordion.checked = false
+      } else {
+        this.selectedEmployees = this.accordion.employee
+        this.accordion.checked = true
+      }
     }
   }
 }
@@ -163,7 +170,7 @@ export default {
 
     &--background {
       background: rgba(0, 154, 241, 0.1);
-      
+
     }
   }
 
