@@ -6,7 +6,7 @@
           <input class="accordion-item__checkbox" type="checkbox" :checked="isAllSelected"  @click="toggleCheckEmployees">
           <span class="accordion-item__text accordion-item__text--title">{{accordion.industry}}</span>
         </label>
-        <button  @click="$emit('toggleOpen', index)" type="button" class="accordion-button">
+        <button  @click="toggleAccordion" type="button" class="accordion-button">
           <img :class="open ? 'accordion-item__img accordion-item__img--active' : 'accordion-item__img'" src="/img/arrow-top.svg" alt="img">
         </button>
       </div>
@@ -24,28 +24,31 @@
 </template>
 
 <script>
+// this.$emit()
+
 export default {
   name: 'accordion',
-  props: ['accordion', 'index', 'open', 'checkAll', 'employees'],
+  props: ['accordion', 'employees'],
   data() {
     return {
+      open: false,
       selectedEmployees: []
     }
   },
   computed: {
     isAllSelected() {
       if (this.accordion.employee.length === this.selectedEmployees.length)  {
-        this.accordion.checked = true
         return true
       } else {
-        this.accordion.checked = false
         return false
       }
-
     }
   },
 
   methods: {
+    toggleAccordion() {
+      this.open = !this.open
+    },
     toggleCheckEmployees() {
       if (this.isAllSelected) {
         this.selectedEmployees = []
