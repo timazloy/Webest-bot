@@ -3,16 +3,27 @@
     <div class="page__bot bot-page">
       <div class="bot-page__column section-list">
         <!-- checkbox component -->
-        <label  class="section-list__check check-all custom-checkbox">
-          <input class="check-all__checkbox" @change="test"  type="checkbox">
-          <span class="check-all__text">Все сотрудники</span>
-        </label>
+<!--        <label  class="section-list__check check-all custom-checkbox">-->
+<!--          <input class="check-all__checkbox" @change="test"  type="checkbox">-->
+<!--          <span class="check-all__text">Все сотрудники</span>-->
+<!--        </label>-->
         <!-- rename component -->
+        <UIAccordion>
+          <template v-slot:head>
+<!--            <UICheckbox :name="" :value="" :checked="asd" v-model="selected" />-->
+            <label class="accordion__title accordion-item custom-checkbox">
+              <input class="accordion-item__checkbox" type="checkbox" >
+              <span class="accordion-item__text accordion-item__text--min">head</span>
+            </label>
+          </template>
+          <template v-slot:body>
+            <label class="accordion__title accordion-item custom-checkbox">
+              <input class="accordion-item__checkbox" type="checkbox" >
+              <span class="accordion-item__text accordion-item__text--min">asdasd</span>
+            </label>
+          </template>
+        </UIAccordion>
         <Accordion
-          class="test"
-          v-for="item in employees"
-          :accordion="item"
-          :key="item.name"
           :employees="employees"
         />
       </div>
@@ -31,16 +42,27 @@
 </template>
 
 <script>
+/**
+ * 1. Научиться определять юай-компоненты и функциональные
+ * 2. Сделать компоненты (Аккордеон, чекбокс, текстареа, ипут тайп файл)
+ * 3. Понять поток данных (Бот - аккордеон - чекбокс)
+ * 4. Пользовательские события (emit) либо через двустороннее связывание (v-model)
+ * 
+ */
+
 import Accordion from "@/components/Accordion";
+import UIAccordion from "@/components/UIAccordion";
 
 export default {
   name: 'bot',
   components: {
-    Accordion
+    Accordion,
+    UIAccordion
   },
   data() {
     return {
       checkAll: false,
+      selected: [],
       employees: [
         {
           industry: 'Дизайн',

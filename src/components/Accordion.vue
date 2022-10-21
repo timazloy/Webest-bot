@@ -1,38 +1,46 @@
 <template>
-  <div class="section-list__item accordion">
+
+  <label  class="section-list__check check-all custom-checkbox">
+    <input class="check-all__checkbox" @click="ttt"  type="checkbox">
+    <span class="check-all__text">Все сотрудники</span>
+  </label>
+
+  <div v-for="item in employees" class="section-list__item accordion">
     <div :class="open ? 'accordion__item-wrapper accordion__item-wrapper--active' : 'accordion__item-wrapper'">
       <div :class="open ? 'accordion__category accordion__category--active' : 'accordion__category'">
         <label class="accordion-item accordion-item--title custom-checkbox">
-          <input class="accordion-item__checkbox" type="checkbox" :checked="isAllSelected"  @click="toggleCheckEmployees">
-          <span class="accordion-item__text accordion-item__text--title">{{accordion.industry}}</span>
+          <input class="accordion-item__checkbox" type="checkbox"  @click="toggleCheckEmployees">
+          <span class="accordion-item__text accordion-item__text--title">{{item.industry}}</span>
         </label>
-        <button  @click="toggleAccordion" type="button" class="accordion-button">
+        <button @click="toggleAccordion" type="button" class="accordion-button">
           <img :class="open ? 'accordion-item__img accordion-item__img--active' : 'accordion-item__img'" src="/img/arrow-top.svg" alt="img">
         </button>
       </div>
     </div>
 
     <div class="accordion__items">
-      <div v-for="item in accordion.employee" :class="selectedEmployees.includes(item) ? 'accordion__item-wrapper accordion__item-wrapper--background' : 'accordion__item-wrapper'" :key="item.id">
+      <div v-for="elem in item.employee">
         <label class="accordion__title accordion-item custom-checkbox">
-          <input class="accordion-item__checkbox" type="checkbox" :value="item" v-model="selectedEmployees">
-          <span class="accordion-item__text accordion-item__text--min">{{item.name}}</span>
+          <input class="accordion-item__checkbox" type="checkbox" >
+          <span class="accordion-item__text accordion-item__text--min">{{elem.name}}</span>
         </label>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
 // this.$emit()
 
 export default {
+  // inheritAttrs: false,
   name: 'accordion',
-  props: ['accordion', 'employees'],
+  props: ['employees'],
   data() {
     return {
       open: false,
-      selectedEmployees: []
+      selectedEmployees: [],
     }
   },
   computed: {
@@ -46,6 +54,9 @@ export default {
   },
 
   methods: {
+    ttt () {
+      console.log(this.employees)
+    },
     toggleAccordion() {
       this.open = !this.open
     },
