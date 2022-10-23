@@ -10,9 +10,13 @@
         <div class="message-section__title">Сообщение</div>
         <div class="message-section__text-section text-section">
           <textarea placeholder="Введите текст" class="text-section__textarea custom-textarea"></textarea>
-          <label>
-            <input type="file">
-          </label>
+          <div class="test123">
+            <label class="text-section__file file-check">
+              <input class="file-check__input" type="file">
+              <img class="file-check__image" src="/img/clip.svg" alt="clip">
+              <p>Файл</p>
+            </label>
+          </div>
         </div>
         <button class="message-section__button-send"></button>
       </div>
@@ -118,9 +122,34 @@ export default {
 
 }
 
+.file-check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+
+
+  &__input {
+    display: none;
+    position: absolute;
+  }
+}
+
+.test123 {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  padding: 15px;
+}
+
 .text-section {
+  position: relative;
   display: flex;
   flex-direction: column;
+
+  &__file {
+    width: fit-content;
+  }
 
   &__textarea {
     margin-bottom: 20px;

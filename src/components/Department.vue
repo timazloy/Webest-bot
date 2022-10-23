@@ -63,7 +63,7 @@ export default {
     checkAll() {
       if (this.checked === true){
         this.selectedEmployees = this.accordion.employee
-        console.log(123)
+        console.log(this.checked)
       }
     }
   },
