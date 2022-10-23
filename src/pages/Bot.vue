@@ -2,19 +2,8 @@
   <div class="container">
     <div class="page__bot bot-page">
       <div class="bot-page__column section-list">
-        <label class="section-list__check check-all custom-checkbox">
-          <input class="check-all__checkbox" :checked="checkAllEmployees" type="checkbox">
-          <span class="check-all__text">Все сотрудники</span>
-        </label>
-        <Accordion
-            v-for="(item, i) in employees"
-            :accordion="item"
-            :index="i"
-            :key="i"
-            :open="item.open"
+        <UIAccordion
             :employees="this.employees"
-            :checkAll="checkAll"
-            @toggleOpen="toggleOpen"
         />
       </div>
       <div class="bot-page__column message-section">
@@ -33,60 +22,41 @@
 </template>
 
 <script>
-import Accordion from "@/components/Accordion";
+import Department from "@/components/Department";
+import UIAccordion from "@/components/UIAccordion";
 export default {
   name: 'bot',
   components: {
-    Accordion
+    Department,
+    UIAccordion
   },
   data() {
     return {
-      checkAll: false,
       employees: [
         {
           industry: 'Дизайн',
           employee: [{id: 1, name: 'Алина Деньщикова'}, {id: 2, name: 'Алина Иванова'}],
-          open: false,
-          checked: false
         },
         {
           industry: 'Менеджмент',
           employee: [{id: 3, name: 'Дмитрий Петров'}, {id: 4, name: 'Алексей Иванов'}],
-          open: false,
-          checked: false
         },
         {
           industry: 'Разработка',
           employee: [{id: 5, name: 'Дмитрий Королев'}, {id: 6, name: 'Алексей Царев'}],
-          open: false,
-          checked: false
         },
         {
           industry: 'SMM',
           employee: [{id: 7, name: 'Ольга Кузнецова'}, {id: 7, name: 'Алексей Щербаков'}],
-          open: false,
-          checked: false
         }
       ]
     }
   },
   computed: {
-    checkAllEmployees() {
-      return this.employees.every(item => {
-        return item.checked
-      })
-    }
+
   },
   methods: {
-    toggleOpen(index) {
-      this.employees = this.employees.map((item, i) => {
-        if (index === i) {
-          item.open = !item.open;
-         }
 
-        return item;
-      });
-    }
   }
 }
 </script>

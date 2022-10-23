@@ -18,15 +18,26 @@
           <input class="accordion-item__checkbox" type="checkbox" :value="item" v-model="selectedEmployees">
           <span class="accordion-item__text accordion-item__text--min">{{item.name}}</span>
         </label>
+<!--        <Input-->
+<!--          :value="item"-->
+<!--          :selectedEmployees="selectedEmployees"-->
+<!--          :name="item.name"-->
+<!--        />-->
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Input from "@/components/UIInput";
+
 export default {
   name: 'accordion',
-  props: ['accordion', 'index', 'open', 'checkAll', 'employees'],
+  props: ['accordion', 'index', 'open', 'checked', 'employees'],
+  components: {
+    Input
+  },
   data() {
     return {
       selectedEmployees: []
@@ -34,14 +45,8 @@ export default {
   },
   computed: {
     isAllSelected() {
-      if (this.accordion.employee.length === this.selectedEmployees.length)  {
-        this.accordion.checked = true
-        return true
-      } else {
-        this.accordion.checked = false
-        return false
-      }
-
+      if (this.accordion.employee.length === this.selectedEmployees.length)  return true
+      else return false
     }
   },
 
@@ -49,13 +54,21 @@ export default {
     toggleCheckEmployees() {
       if (this.isAllSelected) {
         this.selectedEmployees = []
-        this.accordion.checked = false
       } else {
         this.selectedEmployees = this.accordion.employee
-        this.accordion.checked = true
       }
     }
-  }
+  },
+  watch: {
+    checkAll() {
+      if (this.checked === true){
+        this.selectedEmployees = this.accordion.employee
+        console.log(123)
+      }
+    }
+  },
+
+
 }
 
 </script>
