@@ -61,7 +61,16 @@ export default {
   },
   methods: {
 
-  }
+  },
+  // mounted() {
+  //   let textarea = document.querySelector('custom-textarea');
+  //
+  //   textarea.addEventListener('keyup', function(){
+  //     if(this.scrollTop > 0){
+  //       this.style.height = this.scrollHeight + "px";
+  //     }
+  //   });
+  // }
 }
 </script>
 
@@ -136,10 +145,13 @@ export default {
 }
 
 .test123 {
-  position: absolute;
+  //position: absolute;
   bottom: 20px;
   width: 100%;
   padding: 15px;
+  border: 1px solid #DFDFDF;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
 }
 
 .text-section {
@@ -152,7 +164,7 @@ export default {
   }
 
   &__textarea {
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
     resize: none;
     height: 140px;
   }
