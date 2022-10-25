@@ -10,12 +10,20 @@
         <div class="message-section__title">Сообщение</div>
         <div class="message-section__text-section text-section">
           <textarea placeholder="Введите текст" class="text-section__textarea custom-textarea"></textarea>
-          <div class="test123">
+          <div class="text-section__wrapper">
             <label class="text-section__file file-check">
-              <input class="file-check__input" type="file">
+              <input class="file-check__input" ref="imgInput" type="file" accept="image/*" multiple @change="uploadImg($event)">
               <img class="file-check__image" src="/img/clip.svg" alt="clip">
               <p>Файл</p>
             </label>
+            <ul class="text-section__download download-image" v-show="isUpload">
+              <p class="green" v-if="imgUrl.length!==0">Предварительный просмотр изображения</p>
+              <li class="download-image__item" v-for="(list,index) in imgUrl" :key="list">
+                <img class="download-image__image" ref="imgimg" :src="list.url" alt="">
+                <div class="download-image__title">{{this.imgName}}</div>
+                <button class="remove" @click="remove(index)">Удалить</button>
+              </li>
+            </ul>
           </div>
         </div>
         <button class="message-section__button-send"></button>
@@ -36,6 +44,9 @@ export default {
   },
   data() {
     return {
+      isUpload:false,
+      imgUrl:[],
+      imgName:[],
       employees: [
         {
           industry: 'Дизайн',
@@ -60,6 +71,50 @@ export default {
 
   },
   methods: {
+
+    uploadImg(e){
+      // console.log(e.target.files);
+      this.isUpload=true;
+      let file=e.target.files[0];
+      console.log(e.target.files[0])
+      console.log(e.target.files[0].name)
+      this.imgName = e.target.files[0].name
+
+
+      let url='';
+      var reader = new FileReader();
+
+      // console.log(file1)
+      //
+      // for (let item in file1) {
+      //   if(typeof file1[item] === 'object') {
+      //     console.log(reader.readAsDataURL(file1[item]))
+      //
+      //   } else {
+      //     console.log('not obj')
+      //   }
+      //
+      // }
+      // console.log(file[0])
+      // console.log(file[1])
+      // console.log(file[2])
+
+      reader.readAsDataURL(file);
+
+      let that=this;
+      reader.onload = function (e) {
+        url=this.result.substring(this.result.indexOf(',')+1);
+        // that.imgUrl='data:image/png;base64,'+url
+        // that.$refs['imgimg'].setAttribute('src','data:image/png;base64,'+url);
+        that.imgUrl.push({
+          id:that.imgUrl.length+1,
+          url:'data:image/png;base64,'+url
+        })
+      }
+    },
+    remove(index){
+      this.imgUrl.splice(index,1)
+    }
 
   },
   // mounted() {
@@ -87,6 +142,19 @@ export default {
     max-width: 925px;
     width: 100%;
    }
+}
+
+.download-image {
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__image {
+    width: 96px;
+    height: 60px;
+    object-fit: contain;
+  }
 }
 
 .check-all {
@@ -144,20 +212,21 @@ export default {
   }
 }
 
-.test123 {
-  //position: absolute;
-  bottom: 20px;
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #DFDFDF;
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-}
+
 
 .text-section {
   position: relative;
   display: flex;
   flex-direction: column;
+
+  &__wrapper {
+    bottom: 20px;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #DFDFDF;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
 
   &__file {
     width: fit-content;
